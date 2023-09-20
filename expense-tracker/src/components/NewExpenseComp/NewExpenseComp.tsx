@@ -5,10 +5,17 @@ import { useUserContext } from "../../contexts/userContext";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 
+
+//Icon Imports
+import MiscIcon from "../../assets/dices.png";
+import FoodIcon from "../../assets/diet.png";
+import TravelIcon from "../../assets/travelling.png";
+
 export default function NewExpenseComp() {
   const [visible, setVisibility] = useState(false);
   const navigator = useNavigate();
   const categories = ["Misc", "Food", "Travel"];
+  const category_icons = [MiscIcon, FoodIcon, TravelIcon];
   const { user } = useUserContext();
 
   //Data variables used in axios.post are here
@@ -47,6 +54,8 @@ export default function NewExpenseComp() {
     }
   }
 
+ 
+
   async function sendExpense() {
     //if user doesnt exist, we send you back to the login page
     console.log(user);
@@ -80,8 +89,9 @@ export default function NewExpenseComp() {
         <div className="expense-category">
           Categories
           <div className="category-items">
-            {categories.map((category) => (
-              <button
+            {categories.map((category, index) => (
+              <div>
+                <button
                 key={category}
                 className={
                   selected != category ? deselected_class : selected_class
@@ -91,7 +101,11 @@ export default function NewExpenseComp() {
                 }}
               >
                 {category}
+                <img className="category-icons" src={category_icons[index]}></img>
               </button>
+              
+              </div>
+
             ))}
           </div>
         </div>

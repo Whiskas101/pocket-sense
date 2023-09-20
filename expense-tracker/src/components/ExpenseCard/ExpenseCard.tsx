@@ -1,8 +1,16 @@
 import { useState } from "react";
 import "./ExpenseCard.css";
 
+//Icon imports 
+import MiscIcon from "../../assets/dices.png";
+import FoodIcon from "../../assets/diet.png";
+import TravelIcon from "../../assets/travelling.png";
+import ShowIcon from "../../assets/show.png";
+import OpenedIcon from "../../assets/open-show.png"
+import RemoveExpenseIcon from "../../assets/remove.png"
+
 type Expense = {
-  category: String;
+  category: string;
   amount: string;
   date: string;
   desc: string;
@@ -13,6 +21,10 @@ type Expense = {
 type ExpenseData = {
   expenseData: Expense;
 };
+
+
+
+
 
 export default function ExpenseCard({ expenseData }: ExpenseData) {
   const [visible, setVisibility] = useState(false);
@@ -25,20 +37,28 @@ export default function ExpenseCard({ expenseData }: ExpenseData) {
     console.log("fired an attempt to Delete an expense");
   }
 
+  function setCategoryIcon(category : string){
+    switch(category){
+      case "Food": return FoodIcon;
+      case "Travel": return TravelIcon;
+      
+      default: return MiscIcon;
+    }
+  }
+
   return (
     <div className="Expense-Card">
       <div className="Expense-Card-Item">
-        <div>{expenseData.category}</div>
-        <div>₹{expenseData.amount}</div>
-        <div>{expenseData.date.slice(0, 10)}</div>
-        <div>
-          <button className="show-desc" onClick={toggleVisibility}>
-            {" "}
-            O{" "}
+        <img className="category-icons-recent" title={expenseData.category} src={setCategoryIcon(expenseData.category)}></img>
+        <div className="expense-card-amount">₹{expenseData.amount}</div>
+        <div className="expense-card-date">{expenseData.date.slice(0, 10)}</div>
+        <div className="expense-card-options">
+          <button className="hidden-button-item" onClick={toggleVisibility}>
+            {/* only show allow to switch on description if there is one! */}
+            { expenseData.desc ? <img className="option-images" src={  (visible)? OpenedIcon: ShowIcon}></img> : <></>}
           </button>
-          <button className="delete-expense-card" onClick={handleDelete}>
-            {" "}
-            X
+          <button className="hidden-button-item" onClick={handleDelete}>
+          <img className="option-images" src={RemoveExpenseIcon}></img>
           </button>
         </div>
       </div>

@@ -1,6 +1,6 @@
 import "./Dashboard.css";
 import Card from "../../components/Card/Card";
-import Placeholder from "../../assets/placeholder.png";
+
 import NewExpenseComp from "../../components/NewExpenseComp/NewExpenseComp";
 import RecentExpensesComp from "../../components/RecentExpensesComp/RecentExpensesComp";
 import SummaryComp from "../../components/SummaryComp/SummaryComp";
@@ -11,6 +11,13 @@ import { useState } from "react";
 import { useUserContext } from "../../contexts/userContext";
 import BudgetComp from "../../components/BudgetComp/BudgetComp";
 
+//Icon Imports
+// import Placeholder from "../../assets/placeholder.png";
+import MoneyIcon from "../../assets/money.png";
+import RecentExpensesIcon from "../../assets/time.png";
+import SummaryIcon from "../../assets/profits.png";
+import BudgetIcon from "../../assets/wallet.png";
+import DeleteIcon from "../../assets/delete.png"
 
 export default function Dashboard() {
 
@@ -39,24 +46,24 @@ export default function Dashboard() {
               <div className="welcome-message"> {user.username} </div>
               <div className="modes-area">
                 <div onClick={()=>{setMode(1)}}>
-                  <img src={Placeholder}></img>
+                  <img src={MoneyIcon}></img>
                   New Expense
 
                 </div>
                 <div onClick={()=>{setMode(2)}}>
-                  <img src={Placeholder}></img>
+                  <img src={RecentExpensesIcon}></img>
                   Recent Expenses
                 </div>
                 <div onClick={()=>{setMode(3)}}>
-                  <img src={Placeholder}></img>
+                  <img src={SummaryIcon}></img>
                   My Summary
                 </div>
                 <div onClick={()=>{setMode(4)}}>
-                  <img src={Placeholder}></img>
+                  <img src={BudgetIcon}></img>
                   My Budget
                 </div>
                 <div onClick={()=>{setMode(5)}}>
-                  <img src={Placeholder}></img>
+                  <img src={DeleteIcon}></img>
                   Delete Account
                 </div>
               </div>

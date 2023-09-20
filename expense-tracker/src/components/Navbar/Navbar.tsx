@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import "./Navbar.css";
 import Logo from "../../assets/cash-logo.jpg";
 import { useUserContext } from "../../contexts/userContext";
-
+import {toast} from "react-toastify";
 export default function Navbar() {
   const {user} = useUserContext();
 
@@ -20,6 +20,7 @@ export default function Navbar() {
         <Link className='link' to="/dashboard" onClick={(event: React.MouseEvent)=>{
           if(user.id === "-1"){
             event.preventDefault();
+            toast.warn("You are not logged in.");
           }
         }}>Dashboard</Link>
         
