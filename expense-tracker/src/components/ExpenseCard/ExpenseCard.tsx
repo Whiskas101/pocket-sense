@@ -8,6 +8,8 @@ import TravelIcon from "../../assets/travelling.png";
 import ShowIcon from "../../assets/show.png";
 import OpenedIcon from "../../assets/open-show.png"
 import RemoveExpenseIcon from "../../assets/remove.png"
+import axios from "axios";
+import { toast } from "react-toastify";
 
 type Expense = {
   category: string;
@@ -19,22 +21,30 @@ type Expense = {
 };
 
 type ExpenseData = {
-  expenseData: Expense;
+  expenseData: Expense,
+  expenseDataUpdater: Function,
+  selfIndex: number,
 };
 
 
 
-
-
-export default function ExpenseCard({ expenseData }: ExpenseData) {
+export default function ExpenseCard({ expenseData, expenseDataUpdater, selfIndex }: ExpenseData) {
   const [visible, setVisibility] = useState(false);
-
+  
   function toggleVisibility() {
     setVisibility(!visible);
   }
 
-  function handleDelete() {
+  async function handleDelete() {
     console.log("fired an attempt to Delete an expense");
+    const result = await axios.post("http://localhost:8000/user/remove/expense", {
+      expenseid: expenseData.expense_id
+    })
+    console.log(result);
+    toast.success("Deleted Expense");
+
+    expenseDataUpdater((prev: Expense[])=>(prev.splice(selfIndex, 1)));
+
   }
 
   function setCategoryIcon(category : string){
@@ -47,7 +57,7 @@ export default function ExpenseCard({ expenseData }: ExpenseData) {
   }
 
   return (
-    <div className="Expense-Card">
+    <div className={"Expense-Card"}>
       <div className="Expense-Card-Item">
         <img className="category-icons-recent" title={expenseData.category} src={setCategoryIcon(expenseData.category)}></img>
         <div className="expense-card-amount">₹{expenseData.amount}</div>

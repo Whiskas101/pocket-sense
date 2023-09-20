@@ -21,6 +21,7 @@ export default function RecentExpensesComp() {
         userid: string
     }
 
+    
     // we are defining and calling the function within a react useEffect hook that updates based on input range.
     useEffect(()=>{
         async function fetchExpenses(range : number){
@@ -37,16 +38,16 @@ export default function RecentExpensesComp() {
         }
 
         fetchExpenses(range)
-    }, [range]);
+    }, [range, expenseArr.length]);
 
   return (
     <>
       <div className="recent-expenses">
         Recent Expenses
         <div className="expense-list">
-          {expenseArr.length > 0 ? expenseArr.map((expense)=>(
-            <ExpenseCard key={expense.expense_id} expenseData={expense}/>
-          )) : <>Loading</>}
+          {expenseArr.length > 0 ? expenseArr.map((expense, index)=>(
+            <ExpenseCard key={expense.expense_id} expenseData={expense} expenseDataUpdater={setExpenseArr} selfIndex={index}/>
+          )) : <>No Expenses yet</>}
         </div>
         <div className="recent-expenses-options">
           <button className="recent-expenses-btn" onClick={()=>{setRange(7)}}>7 Days </button>
