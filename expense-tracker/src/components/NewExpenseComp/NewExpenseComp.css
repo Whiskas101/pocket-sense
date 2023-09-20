@@ -1,0 +1,88 @@
+
+.add-expense{
+    width: 85%;
+    height: 85%;
+}
+
+
+.category-items{
+    display: flex;
+}
+
+.category-item{
+    padding: 1vw;
+    margin: 0.5vw;
+    border: none;
+    border-radius: 20px;
+    box-shadow: rgba(0, 0, 0, 0.15) 0px 2px 8px;
+
+    font-size: large;
+    font-weight: 500;
+}
+
+.category-item-selected{
+    padding: 1vw;
+    margin: 0.5vw;
+    border: none;
+    border-radius: 20px;
+    box-shadow: rgba(6, 24, 44, 0.4) 0px 0px 0px 2px, rgba(6, 24, 44, 0.65) 0px 4px 6px -1px, rgba(255, 255, 255, 0.08) 0px 1px 0px inset;
+
+    font-size: large;
+    font-weight: 500;
+}
+
+
+
+
+.add-expense-input{
+    height: 4vh;
+    max-width: 13vw;
+    font-size: larger;
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: 900;
+
+    caret-color: rgb(207, 207, 207);
+
+    border-radius: 20px;
+    box-shadow: 0px 0px 25px -18px inset;
+}
+
+.add-expense-desc{
+    outline: none;
+    border: none;
+
+    height: 4vh;
+    min-width: 14vw;
+    min-height: 3vh;
+
+    max-width: 14vw;
+    max-height: 12vh;
+    padding: 1vh;
+    font-size: 2vh;
+    
+    font-weight: 900;
+
+    caret-color: rgb(207, 207, 207);
+
+    border-radius: 20px;
+    box-shadow: 0px 0px 25px -18px inset;
+}
+
+.add-new-desc{
+    padding: 1vh 1.5vw;
+    border-radius: 20px;
+    box-shadow: 0px 0px 25px -18px inset;
+}
+.add-expense-button{
+    font-size: 2.4vh;
+    font-weight: 500;
+    
+    margin: 2vh 0vh;
+    padding: 2vh 1vw;
+    border-radius: 20px;
+    box-shadow: rgba(0, 0, 0, 0.15) 0px 2px 8px;
+}
+
+
+
+

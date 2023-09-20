@@ -1,0 +1,23 @@
+
+.Expense-Card{
+    box-shadow: 0px 0px 15px -7px inset;
+    transition: all ease;
+    transition-duration: 0.2s;
+    border-radius: 12px;
+    width: 100%;
+    margin-bottom: 1vh;
+    
+}
+
+
+.Expense-Card-Item{
+    display: flex;
+    justify-content: space-between;
+    
+    padding: 1vh 2vw;
+    margin: 1vh;
+}
+
+.show-desc{
+    box-shadow: 0px 0px 15px -7px ;
+}

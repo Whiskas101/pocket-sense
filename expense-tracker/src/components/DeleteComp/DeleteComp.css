@@ -1,0 +1,19 @@
+
+.delete>img{
+    width: 50px;
+    height: 50px;
+}
+
+.delete{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.del-cmp-btn{
+    /* border: 3px dashed black; */
+    padding: 1vh 2vw;
+    box-shadow: 0px 0px 25px -18px inset;
+    border-radius: 20px;
+}

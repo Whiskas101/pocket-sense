@@ -1,0 +1,55 @@
+
+.navbar-box{ 
+    display: flex;
+    justify-content: space-between;
+    background-color: rgb(249, 249, 249);
+}
+
+.logo>img{
+    max-width: 7vw;
+    max-height: 7vh;
+    min-width: 60px;
+    
+}
+
+.navbar-box>*{
+    
+    padding: 1vw;
+}
+
+.nav-links{
+    display: flex;
+    align-content: center;
+}
+
+.nav-links>*{
+    padding: 1vw;
+    align-self: center;
+}
+
+.logo{
+    display: flex;
+    flex-direction: row;
+}
+
+.company-name{
+    font-size: 3em;
+    font-weight: 500;
+}
+
+.link{
+    text-decoration: none;
+    color: black;
+    
+    margin-right: 1vw;
+    font-size: larger;
+    font-weight: 600;
+    transition: all 0.1s ease;
+}
+
+.link:hover{
+    font-size: larger;
+    box-shadow: 0px 0px 15px -3px rgb(55, 202, 255);
+    
+    border-radius: 1.5vw;
+}

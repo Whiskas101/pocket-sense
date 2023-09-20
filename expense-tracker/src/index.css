@@ -1,0 +1,29 @@
+html, body{
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    width: 100vw;
+
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    overflow: hidden;
+}
+
+
+
+div#root{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    max-width: none;
+    width: 100%;
+    height: 100%;
+
+}
+
+
+
+
+
+
+
+
