@@ -3,29 +3,38 @@ import "./SummaryComp.css";
 import {
   Chart as ChartJS,
   BarElement,
+  LineElement,
+  PointElement,
   CategoryScale,
   LinearScale,
   Tooltip,
   Legend,
 } from "chart.js";
 import { useEffect, useState } from "react";
-import { Bar, Pie } from "react-chartjs-2";
+import { Bar, Pie, Line } from "react-chartjs-2";
 import BarChart from "react-chartjs-2";
 import { useUserContext } from "../../contexts/userContext";
 import { readUsedSize } from "chart.js/helpers";
 
 interface ExpenseObject {
-  amount: string
-  date: string
+  amount: string;
+  date: string;
 }
 
-
-ChartJS.register(BarElement, CategoryScale, LinearScale, Tooltip, Legend);
+ChartJS.register(
+  BarElement,
+  LineElement,
+  PointElement,
+  CategoryScale,
+  LinearScale,
+  Tooltip,
+  Legend
+);
 
 export default function SummaryComp() {
   const { user } = useUserContext();
   const [expenseData, setExpenseData] = useState<ExpenseObject[] | null>([]);
-  
+  const [remainingBudgetArr, setBudgetArr] = useState<number[] | void[]>();
 
   //helper function to find how many days there are within a given month
   function mapDays() {
@@ -51,30 +60,62 @@ export default function SummaryComp() {
       if (result.data[0].date) {
         setExpenseData(result.data);
         console.log(expenseData);
+
+
+        
+
       }
 
       console.log(currentDate);
-      
     }
+
+    
+    
 
     fetchExpensesUptoToday();
   }, []);
 
+  const Data = {
+    labels: expenseData?.map((expense) => expense.date.slice(0, 10)),
+    datasets: [
+      {
+        label: "Expense",
+        data: expenseData?.map((expense) => expense.amount),
+        backgroundColor: "transparent",
+        borderColor: "#FF0000",
+        pointBorderColor: "black",
+        pointBorderWidth: 2,
+        tension: 0.4,
+      },
+
+      
+      
+
+      
+    ],
+  };
+
+  const Options = {
+    // plugins: {
+    //   // legend: false,
+    // },
+
+    scales: {
+      x: {
+        
+        grid: { display: false },
+      },
+      y:{
+        min:0,
+        
+        
+        grid:{borderDash : [10]}
+      }
+    },
+  };
   return (
     <div className="chart-container">
-        
-      <Bar
-        data={{
-          labels: (expenseData?.map((expense)=>expense.date.slice(0, 10))),
-          datasets: [
-            {
-              label: "Total Expense",
-              data: (expenseData?.map((expense)=>expense.amount)),
-              backgroundColor: "aqua",
-            },
-          ],
-        }}
-      />
+      <Line data={Data} options={Options} />
     </div>
   );
 }

@@ -1,7 +1,7 @@
 .card {
     
     /* border-radius: 2vw; */
-    background-color: rgb(127, 195, 255);
+    background-color: rgb(255, 255, 255);
     /* position: absolute; */
     /* width: 23%;
     min-height: 250px;
@@ -52,7 +52,7 @@
         /* outline-color: aqua; */
         /* outline-style: solid; */
         box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
-        background-color: rgb(242, 242, 242);
+        background-color: rgb(246, 246, 246);
 
     }
 }
