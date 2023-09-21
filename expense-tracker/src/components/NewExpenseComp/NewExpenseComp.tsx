@@ -70,6 +70,11 @@ export default function NewExpenseComp() {
       return;
     }
 
+    if(selected === null){
+      toast.warn("No category selected");
+      return;
+    }
+
     const result = await axios.post("http://localhost:8000/user/add/expense", {
       userid: user.id,
       desc: desc,

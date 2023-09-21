@@ -22,13 +22,17 @@ export default function LoginBox() {
 
   async function handleLogin(event: React.MouseEvent) {
     event.preventDefault();
-
+    //Do not accept empty username or pass
+    if((uname.length === 0) || (pass.length === 0)) {
+      toast.warn("Cannot have empty fields!");
+      return;
+    };
     //api call to database here
     const result = await axios.post("http://localhost:8000/user/login", {
       username: uname,
       password: pass,
     });
-
+    console.log(result);
     //we only do something if we get a valid response, i.e a User JSON Object
     if (result.data.user.id) {
       const { id, budget, username } = result.data.user;
