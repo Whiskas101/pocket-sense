@@ -11,6 +11,23 @@ main{
     align-items: center;
 }
 
+.wave-holder{
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: fit-content;
+  
+}
+
+.custom-wave{
+  z-index: 1000;
+    opacity: 0.99;
+    bottom: 0;
+    
+    width: 100%;
+    position: absolute;
+}
+
 footer .wave{
     position: absolute;
     bottom: 0;

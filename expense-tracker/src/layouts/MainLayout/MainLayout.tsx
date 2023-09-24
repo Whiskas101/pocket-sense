@@ -5,6 +5,9 @@ import "./MainLayout.css";
 import UserContextProvider from "../../contexts/userContext";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+
+import Wave from "react-wavify";
+
 export default function MainLayout() {
   return (
     <>
@@ -36,6 +39,49 @@ export default function MainLayout() {
                     <div className="wave" id="wave4"></div>
                     <div className="wave" id="wave5"></div>
                 </div> */}
+
+        <div className="wave-holder">
+          <div className="custom-wave">
+            <Wave
+              fill="#D7FFc0"
+              paused={false}
+              style={{ display: "flex" }}
+              options={{
+                height: 25,
+                amplitude: 15,
+                speed: 0.7,
+                points: 2,
+              }}
+            />
+          </div>
+          <div className="custom-wave">
+            <Wave
+              fill="#b1ee9f"
+              paused={false}
+              style={{ display: "flex" }}
+              options={{
+                height: 30,
+                amplitude: 40,
+                speed: 0.3,
+                points: 2,
+              }}
+            />
+          </div>
+          <div className="custom-wave">
+          <Wave
+            fill="#436c3f"
+            paused={false}
+            style={{ display: "flex" }}
+            options={{
+              height: 60,
+              amplitude: 35,
+              speed: 0.4,
+              points: 3,
+            }}
+          />
+          </div>
+          
+        </div>
       </footer>
     </>
   );

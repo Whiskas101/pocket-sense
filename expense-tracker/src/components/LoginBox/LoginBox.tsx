@@ -41,7 +41,7 @@ export default function LoginBox() {
         budget: budget,
         username: username,
       };
-      toast(`Welcome ${username}`)
+      toast.success(`Welcome ${username}`)
       //"saving the user id and budget to be used later on in the site"
       setUser(UserData);
       navigate('/dashboard');

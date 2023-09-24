@@ -10,6 +10,7 @@ import {
   Tooltip,
   Legend,
   ArcElement,
+  Filler,
 } from "chart.js";
 import { useEffect, useState } from "react";
 import { Bar, Pie, Line, Doughnut } from "react-chartjs-2";
@@ -34,6 +35,7 @@ ChartJS.register(
   CategoryScale,
   LinearScale,
   ArcElement,
+  Filler,
   Tooltip,
   Legend
 );
@@ -120,19 +122,21 @@ export default function SummaryComp() {
       {
         label: "Expense",
         data: expenseData?.map((expense) => expense.amount),
-        backgroundColor: "transparent",
-        borderColor: "#FF0000",
+        fill: true,
+        backgroundColor: "rgba(205, 245, 193, 0.4)",
+        borderColor: "#436c3f",
         pointBorderColor: "black",
         pointBorderWidth: 2,
         tension: 0.4,
+        
       },
     ],
   };
 
   const Options = {
-    // plugins: {
-    //   // legend: false,
-    // },
+    plugins: {
+       legend: false,
+    },
 
     scales: {
       x: {
@@ -153,9 +157,9 @@ export default function SummaryComp() {
         label: "Expense",
         data: categoryData?.map((expense) => expense.amount),
         backgroundColor: [
-          "rgba(255, 99, 132, 0.2)",
-          "rgba(54, 162, 235, 0.2)",
-          "rgba(255, 206, 86, 0.2)",
+          "rgba(67,	108,	63, 0.8)",
+          "rgba(85,	122,	82, 0.6)",
+          "rgba(177,	238,	159, 0.2)",
           "rgba(75, 192, 192, 0.2)",
           "rgba(153, 102, 255, 0.2)",
           "rgba(255, 159, 64, 0.2)",
