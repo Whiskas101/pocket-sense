@@ -15,8 +15,8 @@
     display: flex;
     justify-content: space-between;
     
-    padding: 1vh 2vw;
-    margin: 1vh;
+    padding: 0.6vh 2vw;
+    margin: 0.5vh;
 }
 
 .show-desc{

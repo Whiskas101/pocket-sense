@@ -123,6 +123,7 @@ export default function NewExpenseComp() {
               onChange={handleAmount}
               value={amt}
               type="number"
+              min={"0"}
             ></input>
           </div>
         </div>

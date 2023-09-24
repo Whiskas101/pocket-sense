@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import "./Navbar.css";
-import Logo from "../../assets/cash-logo.jpg";
+import Logo from "../../assets/logo.gif";
 import { useUserContext } from "../../contexts/userContext";
 import {toast} from "react-toastify";
 export default function Navbar() {
