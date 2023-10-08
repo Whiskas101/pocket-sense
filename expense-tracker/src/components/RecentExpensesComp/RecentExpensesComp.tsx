@@ -9,7 +9,6 @@ export default function RecentExpensesComp() {
     const [range, setRange] = useState(7);
     const {user} = useUserContext();
 
-    //change any here 
     const [expenseArr, setExpenseArr] = useState<expense[]>([]);
 
     type expense = {
