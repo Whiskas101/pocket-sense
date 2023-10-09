@@ -22,11 +22,12 @@
 }
 
 .utility-expense-list{
-    height: 100%;
+    height: 80%;
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
     overflow-y: scroll;
+    max-height: 50vh;
 }
 
 .category-items{

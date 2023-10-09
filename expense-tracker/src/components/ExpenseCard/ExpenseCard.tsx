@@ -15,7 +15,7 @@ type Expense = {
   category: string;
   amount: string;
   date: string;
-  desc: string;
+  description: string;
   userid: string;
   expense_id: string;
 };
@@ -76,7 +76,7 @@ export default function ExpenseCard({
         <div className="expense-card-options">
           <button className="hidden-button-item" onClick={toggleVisibility}>
             {/* only show allow to switch on description if there is one! */}
-            {expenseData.desc ? (
+            {expenseData.description ? (
               <img
                 className="option-images"
                 src={visible ? OpenedIcon : ShowIcon}
@@ -90,7 +90,7 @@ export default function ExpenseCard({
           </button>
         </div>
       </div>
-      <div>{visible ? <div>{expenseData.desc}</div> : <></>}</div>
+      <div>{visible ? <div>{expenseData.description}</div> : <></>}</div>
     </div>
   );
 }

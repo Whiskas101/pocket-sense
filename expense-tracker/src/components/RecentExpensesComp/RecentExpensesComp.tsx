@@ -15,7 +15,7 @@ export default function RecentExpensesComp() {
         amount: string
         category: string
         date: string
-        desc: string
+        description: string
         expense_id: string
         userid: string
     }

@@ -58,7 +58,7 @@ export default function NewExpenseComp() {
     amount: string;
     category: string;
     date: string;
-    desc: string;
+    description: string;
     expense_id: string;
     userid: string;
   };
@@ -123,7 +123,7 @@ export default function NewExpenseComp() {
   useEffect(() => {
     async function fetchExpenses() {
       const result = await axios.post(
-        "http://localhost:8000/home/expenses/recent",
+        "http://localhost:8000/user/fetch/common/expenses",
         {
           userid: user.id,
           range: 7,
@@ -131,14 +131,21 @@ export default function NewExpenseComp() {
       );
       console.log(result);
 
-      //we check the returned data array's first element to see whether a property of expense_id exists on it
-      if (result.data[0].expense_id) {
+      //we check the returned data array's first element to see whether a property of category exists on it
+      if (result.data[0].category) {
         setExpenseArr(result.data);
       }
     }
 
     fetchExpenses();
-  }, [range, expenseArr.length]);
+  }, [range]);
+
+  const updaters = {
+    setSelected,
+    setDesc,
+    setAmt,
+    handleSelect
+  }
 
   return (
     <>
@@ -184,7 +191,7 @@ export default function NewExpenseComp() {
           <div>
             Description
             <div>
-              {visible ? (
+              {desc || visible ? (
                 <textarea
                   className="add-expense-desc"
                   onChange={handleChange}
@@ -211,7 +218,7 @@ export default function NewExpenseComp() {
             {expenseArr.length > 0 ? 
             (
               expenseArr.map((expense, index) => (
-                <UtilExpenseCard ExpenseData={expense} selfIndex={index} />
+                <UtilExpenseCard ExpenseData={expense} selfIndex={index} updaters={updaters}/>
               ))
             ) : (
               <>No Expenses yet</>
