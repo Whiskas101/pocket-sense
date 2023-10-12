@@ -144,8 +144,9 @@ export default function NewExpenseComp() {
     setSelected,
     setDesc,
     setAmt,
-    handleSelect
-  }
+    handleSelect,
+    sendExpense,
+  };
 
   return (
     <>
@@ -214,16 +215,20 @@ export default function NewExpenseComp() {
           </div>
         </div>
         <div className="utility-side">
-          <div className="utility-expense-list">
-            {expenseArr.length > 0 ? 
-            (
-              expenseArr.map((expense, index) => (
-                <UtilExpenseCard ExpenseData={expense} selfIndex={index} updaters={updaters}/>
-              ))
-            ) : (
-              <>No Expenses yet</>
-            )}
-          </div>
+          {expenseArr.length > 0 ? (
+            <div className="utility-expense-list">
+              {expenseArr.length > 0 &&
+                expenseArr.map((expense, index) => (
+                  <UtilExpenseCard
+                    ExpenseData={expense}
+                    selfIndex={index}
+                    updaters={updaters}
+                  />
+                ))}
+            </div>
+          ) : (
+            <></>
+          )}
         </div>
       </div>
     </>

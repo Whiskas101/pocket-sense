@@ -1,13 +1,16 @@
 
 
 import './Home.css';
-
+import HomePageTitleElement from "../../assets/homePageTitle.gif"
 
 
 export default function Home(){
     return (
         <>
-        <h1>Home page</h1></>
+            <img src={HomePageTitleElement}></img>
+        
+        </>
+        
     );
 }
 

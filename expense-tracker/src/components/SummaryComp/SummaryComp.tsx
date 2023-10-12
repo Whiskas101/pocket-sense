@@ -1,5 +1,7 @@
 import axios from "axios";
+import exportFromJSON from "export-from-json";
 import "./SummaryComp.css";
+
 import {
   Chart as ChartJS,
   BarElement,
@@ -49,6 +51,8 @@ export default function SummaryComp() {
 
   const [amountSpent, setAmtSpent] = useState("0");
 
+  const [data, setData] = useState([{}]);
+
   // We find all the expenses made upto today, starting from the first of the given month
   useEffect(() => {
     //Data for Line chart is fetched via this function
@@ -68,6 +72,7 @@ export default function SummaryComp() {
 
       if (result.data[0].date) {
         setExpenseData(result.data);
+        setData(result.data);
         // console.log(expenseData);
       }
 
@@ -101,14 +106,14 @@ export default function SummaryComp() {
         "http://localhost:8000/home/expenses/sum/by/range",
         {
           range: range,
-          userid : user.id
+          userid: user.id,
         }
       );
-      
-      console.log(result)
-        if(result.data[0].amount){
-          setAmtSpent(result.data[0].amount);
-        }
+
+      console.log(result);
+      if (result.data[0].amount) {
+        setAmtSpent(result.data[0].amount);
+      }
     }
 
     fetchExpensesUptoToday();
@@ -128,14 +133,13 @@ export default function SummaryComp() {
         pointBorderColor: "black",
         pointBorderWidth: 2,
         tension: 0.4,
-        
       },
     ],
   };
 
   const Options = {
     plugins: {
-       legend: false,
+      legend: false,
     },
 
     scales: {
@@ -168,9 +172,28 @@ export default function SummaryComp() {
     ],
   };
 
+  async function handleExport(e: React.MouseEvent){
+    e.preventDefault();
+    const curDate = Date().toString().slice(0, 15)
+   
+    try{
+      const filename = `Report ${curDate}`;
+      const exporttype = exportFromJSON.types.csv;
+      console.log(data)
+      exportFromJSON({
+        data,
+        fileName: filename,
+        exportType: exporttype
+      });
+
+    }catch(err){
+      console.log(err)
+    }
+  }
+
   return (
     <>
-      {categoryData ? (
+      {categoryData  && parseFloat(user.budget) > 0.0 ? (
         <div className="summary-area">
           <div className="chart-container">
             <div className="expense-chart">
@@ -183,17 +206,31 @@ export default function SummaryComp() {
             </div>
           </div>
           <div>
-            {
-              (parseFloat(amountSpent) > parseFloat(user.budget)) ?
-                <div>You have overspent by {Math.floor(((parseFloat(amountSpent)-parseFloat(user.budget))/parseFloat(user.budget)) * 100)}%</div>
-              : 
-              
-              <div>You have spent {Math.floor(parseFloat(amountSpent)/parseFloat(user.budget) * 100)}% of your total budget</div> 
-            }
+            {   (parseFloat(amountSpent) > parseFloat(user.budget)) ? (
+              <div>
+                You have overspent by{" "}
+                {Math.floor(
+                  ((parseFloat(amountSpent) - parseFloat(user.budget)) /
+                    parseFloat(user.budget)) *
+                    100
+                )}
+                %
+              </div>
+            ) : (
+              <div>
+                You have spent{" "}
+                {Math.floor(
+                  (parseFloat(amountSpent) / parseFloat(user.budget)) * 100
+                )}
+                % of your total budget
+              </div>
+            )}
+            <button className="export-button" onClick={handleExport}>Export CSV</button>
           </div>
         </div>
       ) : (
         <div>Not Enough Data</div>
+        
       )}
     </>
   );
