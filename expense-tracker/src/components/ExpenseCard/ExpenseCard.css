@@ -57,3 +57,14 @@
 .expense-card-amount{
     font-size: 4vh;
 }
+
+.expense-card-description{
+    display: flex;
+    margin: 0vw 1vw 0vw 1vw;
+    
+}
+
+.word-wrappable{
+    max-width: 700px;
+    overflow-wrap: break-word;
+}

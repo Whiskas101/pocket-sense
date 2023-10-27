@@ -34,6 +34,8 @@
     display: flex;
     overflow-x: scroll;
     max-width: 35vw;
+
+    
 }
 .category-items::-webkit-scrollbar
 {
@@ -54,7 +56,8 @@
     border: none;
     border-radius: 20px;
     box-shadow: rgba(0, 0, 0, 0.15) 0px 2px 8px;
-    min-width: 6vw;
+    min-width: 2vw;
+    min-height: 2vw;
     font-size: large;
     font-weight: 500;
 }

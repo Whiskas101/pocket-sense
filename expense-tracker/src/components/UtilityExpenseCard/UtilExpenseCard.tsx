@@ -2,6 +2,13 @@ import "./UtilExpenseCard.css";
 import MiscIcon from "../../assets/dices.png";
 import FoodIcon from "../../assets/diet.png";
 import TravelIcon from "../../assets/travelling.png";
+import LeisureIcon from "../../assets/leisure.png";
+import MedicalIcon from "../../assets/medical.png";
+import EducationIcon from "../../assets/education.png";
+import GiftsIcon from "../../assets/gift.png";
+import DebtIcon from "../../assets/debt.png";
+import TaxesIcon from "../../assets/taxes.png";
+
 import CopyIcon from "../../assets/copy.png";
 import RepeatIcon from "../../assets/repeat.png";
 import { useUserContext } from "../../contexts/userContext";
@@ -34,8 +41,15 @@ export default function UtilExpenseCard({
     switch (category) {
       case "Food":
         return FoodIcon;
+
       case "Travel":
         return TravelIcon;
+      case "Leisure": return LeisureIcon;
+      case "Medical": return MedicalIcon; 
+      case "Education": return EducationIcon; 
+      case "Gifts": return GiftsIcon; 
+      case "Debt": return DebtIcon; 
+      case "Taxes": return TaxesIcon; 
 
       default:
         return MiscIcon;
@@ -67,17 +81,17 @@ export default function UtilExpenseCard({
     <>
       <div className="UtilExpenseCard">
         <img
-          className="category-icons-recent"
+          className="custom-category-icon"
           src={setCategoryIcon(ExpenseData.category)}
         ></img>
         {parseFloat(ExpenseData.amount) > 1000 ? (
-          <div>₹{Math.round(parseFloat(ExpenseData.amount) / 1000.0)}k</div>
+          <div className="util-expense-amount">₹{Math.round(parseFloat(ExpenseData.amount) / 1000.0)}k</div>
         ) : (
-          <div>₹{ExpenseData.amount}</div>
+          <div className="util-expense-amount">₹{ExpenseData.amount}</div>
         )}
-        <img className="category-icons" src={CopyIcon} onClick={copyData}></img>
+        <img className="custom-icon" src={CopyIcon} onClick={copyData}></img>
         <img
-          className="category-icons"
+          className="custom-icon"
           src={RepeatIcon}
           onClick={repeatExpense}
         ></img>

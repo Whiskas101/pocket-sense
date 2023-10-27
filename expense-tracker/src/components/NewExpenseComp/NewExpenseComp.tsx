@@ -9,6 +9,12 @@ import { toast } from "react-toastify";
 import MiscIcon from "../../assets/dices.png";
 import FoodIcon from "../../assets/diet.png";
 import TravelIcon from "../../assets/travelling.png";
+import LeisureIcon from "../../assets/leisure.png";
+import MedicalIcon from "../../assets/medical.png";
+import EducationIcon from "../../assets/education.png";
+import GiftsIcon from "../../assets/gift.png";
+import DebtIcon from "../../assets/debt.png";
+import TaxesIcon from "../../assets/taxes.png";
 
 //Utility bar imports
 import UtilExpenseCard from "../UtilityExpenseCard/UtilExpenseCard";
@@ -20,23 +26,23 @@ export default function NewExpenseComp() {
     "Misc",
     "Food",
     "Travel",
-    "Misc",
-    "Food",
-    "Travel",
-    "Misc",
-    "Food",
-    "Travel",
-    "Misc",
-    "Food",
-    "Travel",
+    "Leisure",
+    "Medical",
+    "Education",
+    "Gifts",
+    "Debt",
+    "Taxes",
   ];
   const category_icons = [
     MiscIcon,
     FoodIcon,
     TravelIcon,
-    MiscIcon,
-    FoodIcon,
-    TravelIcon,
+    LeisureIcon,
+    MedicalIcon,
+    EducationIcon,
+    GiftsIcon,
+    DebtIcon,
+    TaxesIcon,
   ];
   const { user } = useUserContext();
 
@@ -70,7 +76,8 @@ export default function NewExpenseComp() {
 
   function handleChange(event: React.ChangeEvent<HTMLTextAreaElement>) {
     setDesc(event.target.value);
-    console.log(desc);
+    console.log(desc.length);
+    // console.log(desc);
   }
 
   //used to show description box
@@ -99,6 +106,10 @@ export default function NewExpenseComp() {
 
     if (amt === "0" || amt === "" || parseFloat(amt) <= 0) {
       toast.warn("Please enter a valid amount! 💀");
+      return;
+    }
+    if(desc.length > 100){
+      toast.warn("Description too long!");
       return;
     }
 

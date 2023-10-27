@@ -1,5 +1,29 @@
-.UtilExpenseCard{
+.UtilExpenseCard {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    
+}
+
+.utility-expense-list{
+    overflow: hidden;
+}
+.custom-icon {
+    max-width: 35px;
+    max-height: 35px;
+    margin-left: 1vw;
+    margin-right: 1vw;
+    align-self: center;
+}
+
+.util-expense-amount {
+    display: flex;
+    justify-content: center;
+    flex: 6;
+}
+
+.custom-category-icon {
+    width: 2.4vw;
+    height: 4.4vh;
+    flex: 3;
 }

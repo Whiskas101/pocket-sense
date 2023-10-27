@@ -5,6 +5,13 @@ import "./ExpenseCard.css";
 import MiscIcon from "../../assets/dices.png";
 import FoodIcon from "../../assets/diet.png";
 import TravelIcon from "../../assets/travelling.png";
+import LeisureIcon from "../../assets/leisure.png";
+import MedicalIcon from "../../assets/medical.png";
+import EducationIcon from "../../assets/education.png";
+import GiftsIcon from "../../assets/gift.png";
+import DebtIcon from "../../assets/debt.png";
+import TaxesIcon from "../../assets/taxes.png";
+
 import ShowIcon from "../../assets/show.png";
 import OpenedIcon from "../../assets/open-show.png";
 import RemoveExpenseIcon from "../../assets/remove.png";
@@ -55,8 +62,15 @@ export default function ExpenseCard({
     switch (category) {
       case "Food":
         return FoodIcon;
+
       case "Travel":
         return TravelIcon;
+      case "Leisure": return LeisureIcon;
+      case "Medical": return MedicalIcon; 
+      case "Education": return EducationIcon; 
+      case "Gifts": return GiftsIcon; 
+      case "Debt": return DebtIcon; 
+      case "Taxes": return TaxesIcon; 
 
       default:
         return MiscIcon;
@@ -90,7 +104,7 @@ export default function ExpenseCard({
           </button>
         </div>
       </div>
-      <div>{visible ? <div>{expenseData.description}</div> : <></>}</div>
+      <div className="expense-card-description">{visible ? <div className="word-wrappable">{expenseData.description}</div> : <></>}</div>
     </div>
   );
 }
